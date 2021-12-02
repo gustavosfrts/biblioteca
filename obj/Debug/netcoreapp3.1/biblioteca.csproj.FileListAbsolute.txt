@@ -1,0 +1,11 @@
+C:\projetos\biblioteca\bin\Debug\netcoreapp3.1\biblioteca.exe
+C:\projetos\biblioteca\bin\Debug\netcoreapp3.1\biblioteca.deps.json
+C:\projetos\biblioteca\bin\Debug\netcoreapp3.1\biblioteca.runtimeconfig.json
+C:\projetos\biblioteca\bin\Debug\netcoreapp3.1\biblioteca.runtimeconfig.dev.json
+C:\projetos\biblioteca\bin\Debug\netcoreapp3.1\biblioteca.dll
+C:\projetos\biblioteca\bin\Debug\netcoreapp3.1\biblioteca.pdb
+C:\projetos\biblioteca\obj\Debug\netcoreapp3.1\biblioteca.csprojAssemblyReference.cache
+C:\projetos\biblioteca\obj\Debug\netcoreapp3.1\biblioteca.AssemblyInfoInputs.cache
+C:\projetos\biblioteca\obj\Debug\netcoreapp3.1\biblioteca.AssemblyInfo.cs
+C:\projetos\biblioteca\obj\Debug\netcoreapp3.1\biblioteca.dll
+C:\projetos\biblioteca\obj\Debug\netcoreapp3.1\biblioteca.pdb
