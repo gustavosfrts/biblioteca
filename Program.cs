@@ -10,6 +10,8 @@ namespace biblioteca
             Console.WriteLine("-------Login biblioteca-------");
             
             Funcionario funcionario = new Funcionario();
+            Livro livro = new Livro();
+            livro.cadastrarLivro();
             Console.WriteLine("Informe o CPF para logar no sistema: ");
             string cpf = Console.ReadLine();
             Console.WriteLine("Informe sua senha: ");
