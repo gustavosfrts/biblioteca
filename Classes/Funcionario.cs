@@ -64,5 +64,34 @@ namespace biblioteca.Classes
             }
             return false;
         }
+
+        public Funcionario retornaFuncionario(string cpf)
+        {
+            string[] funcionarios = File.ReadAllLines("C:\\projetos\\biblioteca\\arquivos\\funcionarios.txt");
+            Funcionario func = new Funcionario();
+
+            foreach (var funcionario in funcionarios)
+            {
+                string[] f = funcionario.Split(";");
+                if (f[0] == cpf)
+                {
+                    func.setCpf(f[0]);
+                    func.setTipoUsuario(Int32.Parse(f[1]));
+                    func.setNome(f[2]);
+                    func.setEmail(f[3]);
+                    func.setSenha(f[4]);
+                }
+            }
+            return func;
+        }
+        public static bool validaFuncionario(Funcionario funcionario)
+        // Método valida se é adm ou não. Caso seja Administrador, retorna TRUE, caso contrario, retorna FALSE.
+        {
+            if (funcionario.getTipoUsuario() == 1)
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }

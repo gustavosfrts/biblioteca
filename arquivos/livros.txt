@@ -1,1 +1,2 @@
-asb;asdf;12
+1;Percy Jackson e o ladrao de raios;Intriseca;10
+2;Percy jackson e o mar de monstros;Intriseca;15
