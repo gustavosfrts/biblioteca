@@ -33,6 +33,8 @@ namespace biblioteca
                             livro.cadastrarLivro();
                             Console.WriteLine("Livro cadastrado com sucesso.");
                             ops = 999;
+                            Console.WriteLine("Pressione qualquer botão para continuar...");
+                            Console.ReadLine();
                             break;
                         case 2:
                             livro.listarLivros();
@@ -49,6 +51,8 @@ namespace biblioteca
                             livro.editarLivro(id, nomeLivro, nomeEditora, quantidadeLivros);
                             Console.WriteLine("Livro editado com sucesso!");
                             ops = 999;
+                            Console.WriteLine("Pressione qualquer botão para continuar...");
+                            Console.ReadLine();
                             break;
                         case 3:
                             if(funcionario.cadastroFuncionario())
@@ -57,6 +61,8 @@ namespace biblioteca
                                 break;
                             }
                             ops = 999;
+                            Console.WriteLine("Pressione qualquer botão para continuar...");
+                            Console.ReadLine();
                             break;
                         case 4:
                             if(funcionario.edicaoFuncionario())
@@ -64,12 +70,56 @@ namespace biblioteca
                                 Console.WriteLine("Funcionário editado com sucesso!");
                             }
                             ops = 999;
+                            Console.WriteLine("Pressione qualquer botão para continuar...");
+                            Console.ReadLine();
                             break;
                         case 5:
                             if (cliente.cadastroCliente())
                             {
                                 Console.WriteLine("Cliente cadastrado com sucesso!");
                             }
+                            ops = 999;
+                            Console.WriteLine("Pressione qualquer botão para continuar...");
+                            Console.ReadLine();
+                            break;
+                        case 6:
+                            Console.WriteLine("Informe o CPF do cliente: ");
+                            string cpfCliente = Console.ReadLine();
+                            if (!Cliente.encontrarCliente(cpfCliente))
+                            {
+                                Console.WriteLine("Não foi possível encontrar este CPF em nossa base de dados. Por favor, tente novamente mais tarde.");
+                                break;
+                            }
+                            Livro.listarLivrosDisponiveis();
+                            Console.WriteLine("Informe o ID do livro que deseja pegar emprestado: ");
+                            int livroId = Int32.Parse(Console.ReadLine());
+                            if (!Livro.livroDisponivel(livroId))
+                            {
+                                Console.WriteLine("Livro incorreto. Por favor, tente novamente mais tarde.");
+                                break;
+                            }
+                            Emprestimo.cadastroEmprestimo(funcionario.getCpf(), cpfCliente, livroId);
+                            
+                            Console.WriteLine("Pressione qualquer botão para continuar...");
+                            Console.ReadLine();
+                            ops = 999;
+                            Console.WriteLine("Pressione qualquer botão para continuar...");
+                            Console.ReadLine();
+                            break;
+                        case 7:
+                            Console.WriteLine("Informe o CPF do cliente: ");
+                            string cpfDevolucao = Console.ReadLine();
+                            if(Emprestimo.devolverLivro(cpfDevolucao))
+                            {
+                                Console.WriteLine("Devolução realizada com sucesso.");
+                                Console.WriteLine("Pressione qualquer botão para continuar...");
+                                Console.ReadLine();
+                                ops = 999;
+                                break;
+                            }
+                            Console.WriteLine("Não foi possível realizar a devolução do livro. Tente novamente mais tarde.");
+                            Console.WriteLine("Pressione qualquer botão para continuar...");
+                            Console.ReadLine();
                             ops = 999;
                             break;
                         case 8:
@@ -87,7 +137,7 @@ namespace biblioteca
                             Console.WriteLine("4. Editar colaborador");
                             Console.WriteLine("5. Cadastrar cliente");
                             Console.WriteLine("6. Realizar empréstimo");
-                            Console.WriteLine("7. Verificar empréstimos ativos");
+                            Console.WriteLine("7. Devolver livro");
                             Console.WriteLine("8. Sair");
                             aux = Int32.TryParse(Console.ReadLine(), out ops);
                             if (!aux){ ops = 0; }
@@ -96,6 +146,8 @@ namespace biblioteca
                             Console.WriteLine("Opção incorreta. Por favor, tente novamente!");
                             aux = Int32.TryParse(Console.ReadLine(), out ops);
                             if (!aux){ ops = 0; }
+                            Console.WriteLine("Pressione qualquer botão para continuar...");
+                            Console.ReadLine();
                             break;
                     }
                 }

@@ -106,6 +106,100 @@ namespace biblioteca.Classes
             livroArquivo.Close();
             }
         }
-             
+
+        public static void listarLivrosDisponiveis()
+        {
+            string[] livros = File.ReadAllLines("C:\\projetos\\biblioteca\\arquivos\\livros.txt");
+            foreach (var livroConcatenado in livros)
+            {
+                string[] livro = livroConcatenado.Split(";");
+                if (Int32.Parse(livro[3]) > 0)
+                {    
+                    Console.WriteLine();
+                    Console.WriteLine("Id: {0}", livro[0]);
+                    Console.WriteLine("Nome: {0}", livro[1]);
+                    Console.WriteLine("Editora: {0}", livro[2]);
+                    Console.WriteLine("Quantidade em estoque: {0}", livro[3]);
+                    Console.WriteLine();
+                }
+            }
+        }
+
+        public static bool livroDisponivel(int livroId)     
+        {
+            string[] livros = File.ReadAllLines("C:\\projetos\\biblioteca\\arquivos\\livros.txt");
+            foreach (var livroConcatenado in livros)
+            {
+                string[] livro = livroConcatenado.Split(";");
+                if (Int32.Parse(livro[3]) > 0)
+                {    
+                    if (Int32.Parse(livro[0]) == livroId)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        public static void pegarLivro(int livroId)
+        {
+            string[] livros = File.ReadAllLines("C:\\projetos\\biblioteca\\arquivos\\livros.txt");
+            string[] livrosAtualizado = new string[livros.Length];
+
+            for (int i = 0; i <= livros.Length-1; i++)
+            {
+                string[] livro = livros[i].Split(";");
+                if (Int32.Parse(livro[0]) == livroId)
+                {
+                    livro[3] = (Int32.Parse(livro[3]) - 1).ToString();
+                    livrosAtualizado[i] = livro[0] + ";" + livro[1] + ";" + livro[2] + ";" + livro[3];
+                }
+                else
+                {
+                    livrosAtualizado[i] = livros[i];
+                }
+                
+            File.WriteAllText("C:\\projetos\\biblioteca\\arquivos\\livros.txt", "");
+            FileStream livroArquivo = new FileStream("C:\\projetos\\biblioteca\\arquivos\\livros.txt", FileMode.Append, FileAccess.Write);
+            StreamWriter swLivro = new StreamWriter(livroArquivo);
+            foreach (var l in livrosAtualizado)
+            {    
+                swLivro.WriteLine(l);
+            }
+            swLivro.Close();
+            livroArquivo.Close();
+            }
+        }
+
+        public static void devolverLivro(int livroId)
+        {
+            string[] livros = File.ReadAllLines("C:\\projetos\\biblioteca\\arquivos\\livros.txt");
+            string[] livrosAtualizado = new string[livros.Length];
+
+            for (int i = 0; i <= livros.Length-1; i++)
+            {
+                string[] livro = livros[i].Split(";");
+                if (Int32.Parse(livro[0]) == livroId)
+                {
+                    livro[3] = (Int32.Parse(livro[3]) + 1).ToString();
+                    livrosAtualizado[i] = livro[0] + ";" + livro[1] + ";" + livro[2] + ";" + livro[3];
+                }
+                else
+                {
+                    livrosAtualizado[i] = livros[i];
+                }
+                
+            }
+            File.WriteAllText("C:\\projetos\\biblioteca\\arquivos\\livros.txt", "");
+            FileStream livroArquivo = new FileStream("C:\\projetos\\biblioteca\\arquivos\\livros.txt", FileMode.Append, FileAccess.Write);
+            StreamWriter swLivro = new StreamWriter(livroArquivo);
+            foreach (var l in livrosAtualizado)
+            {    
+                swLivro.WriteLine(l);
+            }
+            swLivro.Close();
+            livroArquivo.Close();
+        }
     }
 }

@@ -52,5 +52,20 @@ namespace biblioteca.Classes
             clienteFile.Close();
             return true;
         }
+
+        public static bool encontrarCliente(string cpf)
+        {
+            string[] clientes = File.ReadAllLines("C:\\projetos\\biblioteca\\arquivos\\clientes.txt");
+            foreach (var cliente in clientes)
+            {
+                string[] c = cliente.Split(";");
+                if (c[0] == cpf)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
     }
 }
