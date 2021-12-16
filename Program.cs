@@ -13,14 +13,14 @@ namespace biblioteca
             Livro livro = new Livro();
             Cliente cliente = new Cliente();
 
-            // Console.WriteLine("Informe o CPF para logar no sistema: ");
-            // string cpf = Console.ReadLine();
-            // Console.WriteLine("Informe sua senha: ");
-            // string senha = Console.ReadLine();
+            Console.WriteLine("Informe o CPF para logar no sistema: ");
+            string cpf = Console.ReadLine();
+            Console.WriteLine("Informe sua senha: ");
+            string senha = Console.ReadLine();
 
-            // if(funcionario.login(cpf, senha))
-            // {
-                funcionario = funcionario.retornaFuncionario("11111111111");
+            if(funcionario.login(cpf, senha))
+            {
+                funcionario = funcionario.retornaFuncionario(cpf);
                 int ops = 999;
                 bool aux;
 
@@ -152,10 +152,10 @@ namespace biblioteca
                     }
                 }
                 
-            // }else
-            // {
-            //     Console.WriteLine("Login incorreto. O sistema será encerrado.");
-            // }
+            }else
+            {
+                Console.WriteLine("Login incorreto. O sistema será encerrado.");
+            }
         }
     }
 }
