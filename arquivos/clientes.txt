@@ -1,1 +1,2 @@
 123456;279991234567;Cliente de teste;rua 123 numero 456
+14785236910;27999998888;Cliente nome;rua cliente numero 50

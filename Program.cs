@@ -58,6 +58,7 @@ namespace biblioteca
                             if(funcionario.cadastroFuncionario())
                             {
                                 Console.WriteLine("Funcionário cadastrado com sucesso!");
+                                ops = 999;
                                 break;
                             }
                             ops = 999;
@@ -88,6 +89,7 @@ namespace biblioteca
                             if (!Cliente.encontrarCliente(cpfCliente))
                             {
                                 Console.WriteLine("Não foi possível encontrar este CPF em nossa base de dados. Por favor, tente novamente mais tarde.");
+                                ops = 999;
                                 break;
                             }
                             Livro.listarLivrosDisponiveis();
@@ -96,6 +98,7 @@ namespace biblioteca
                             if (!Livro.livroDisponivel(livroId))
                             {
                                 Console.WriteLine("Livro incorreto. Por favor, tente novamente mais tarde.");
+                                ops = 999;
                                 break;
                             }
                             Emprestimo.cadastroEmprestimo(funcionario.getCpf(), cpfCliente, livroId);
